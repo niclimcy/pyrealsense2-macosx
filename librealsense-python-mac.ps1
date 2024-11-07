@@ -7,7 +7,7 @@
 # brew install openssl
 
 param (
-    [string]$tag = "v2.56.2",
+    [string]$tag = "development",
     [string]$root = "librealsense",
     [string]$libusbPath = "libusb",
     [string]$libusbTag = "v1.0.27",
