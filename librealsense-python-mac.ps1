@@ -97,7 +97,7 @@ pushd $root
 mkdir build
 pushd build
 
-cmake .. -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" `
+cmake .. -DCMAKE_OSX_ARCHITECTURES="arm64" `
 -DCMAKE_THREAD_LIBS_INIT="-lpthread" `
 -DCMAKE_BUILD_TYPE=RELEASE `
 -DBUILD_PYTHON_BINDINGS=bool:true `
@@ -161,11 +161,7 @@ pip install wheel
 
 # build python binary (need to add universal flag for version < 3.9)
 [int]$pythonMajorMinorVersion = python -c "import sys; print(str(sys.version_info.major) + str(sys.version_info.minor))"
-if ($pythonMajorMinorVersion -lt 311) {
-    python setup.py bdist_wheel --plat-name="macosx_$($deploymentTarget)_universal2"
-} else {
-    python setup.py bdist_wheel
-}
+python setup.py bdist_wheel --plat-name="macosx_$($deploymentTarget)_arm64"
 
 Check-LastCommandStatusAndExit "python wheel could not be created!"
 
