@@ -13,7 +13,7 @@ param (
     [string]$libusbTag = "v1.0.27",
     [string]$dist = "dist",
     [bool]$delocate = $true,
-    [string]$deploymentTarget = "12",
+    [string]$deploymentTarget = "15",
     [switch]$clean
 )
 
