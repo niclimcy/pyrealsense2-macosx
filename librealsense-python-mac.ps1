@@ -13,7 +13,7 @@ param (
     [string]$libusbTag = "v1.0.27",
     [string]$dist = "dist",
     [bool]$delocate = $true,
-    [string]$deploymentTarget = "15",
+    [string]$deploymentTarget = "15_0",
     [switch]$clean
 )
 
@@ -162,7 +162,7 @@ pip install wheel
 # build python binary (need to add universal flag for version < 3.9)
 [int]$pythonMajorMinorVersion = python -c "import sys; print(str(sys.version_info.major) + str(sys.version_info.minor))"
 if ($pythonMajorMinorVersion -lt 311) {
-    python setup.py bdist_wheel --plat-name="macosx_$($deploymentTarget)_0_universal2"
+    python setup.py bdist_wheel --plat-name="macosx_$($deploymentTarget)_universal2"
 } else {
     python setup.py bdist_wheel
 }
